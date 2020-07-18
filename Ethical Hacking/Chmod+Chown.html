@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="Understanding chmod and chown">
+  <meta property="og:image" content="https://www.linode.com/docs/tools-reference/linux-users-and-groups/linux_users_and_groups.png">
+  <meta name="twitter:image" content="https://www.linode.com/docs/tools-reference/linux-users-and-groups/linux_users_and_groups.png">
+  <meta name="author" content="Praddyum Verma & Abhinav Gupta">
+
+  <title>chmod & chown</title>
+
+  <!-- Bootstrap core CSS -->
+  <link href="../vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+  <!-- Custom fonts for this template -->
+  <link href="../vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+  <link href='https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+  <link href='https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
+
+  <!-- Custom styles for this template -->
+  <link href="../css/clean-blog.min.css" rel="stylesheet">
+
+</head>
+
+<body>
+
+  <!-- Navigation -->
+  <nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav">
+    <div class="container">
+      <a class="navbar-brand" href="../index.html">Techx | 101</a>
+      <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+        Menu
+        <i class="fas fa-bars"></i>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarResponsive">
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item">
+            <a class="nav-link" href="../index.html">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="../about.html">About</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="Ethical_Hacking_Home.html">Ethical Hacking</a>
+          </li>
+          <!--<li class="nav-item">
+            <a class="nav-link" href="../contact.html">Contact Us</a>
+          </li>-->
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Page Header -->
+  <header class="masthead" style="background-image: url(Images/chmod/Back.jpg)">
+    <div class="overlay"></div>
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-8 col-md-10 mx-auto">
+          <div class="post-heading">
+            <h1>chmod & chown</h1>
+            <h2 class="subheading">Ownership demistifyied</h2>
+            <span class="meta">By
+              <a href="https://www.linkedin.com/in/praddyum/">Praddyum Verma</a> & <a href="https://www.linkedin.com/in/abhinav-g-5503b1a8">Abhinav Gupta</a><!--ADD LINKEDIN PROFILE LINKS-->
+              <br><br> 18 July 2020
+            </span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Post Content -->
+  <article>
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-8 col-md-10 mx-auto">
+          <p align="justify">
+            Understanding ownership of a file is one of the most important parts
+            that anyone should know. In the context of an Ethical Hacker, by knowing the
+            ownership and privileges provided to a file he/she can do a user privilege escalation in most of the cases.
+            So it's most important to be familiar with the commands related to permissions which a file or folders have. We
+            as a protector should know which files to give which permission and under which user.
+            Don't worry we'll be covering all these commands in this article making it as easy as possible for you.
+          </p>
+          <p align="justify">
+            Let's learn the whole concept through an analogy of a bank. Let's say you have a computer
+            and you want to set up three user levels for it.
+          </p>
+          <h2 class="section-heading">Type of users?</h2>
+          <p align="justify">
+            So when you log into any device then depending upon your login steps and credentials a system will possibly
+            recognize you as:
+            <ol>
+              <li>Root/Admin user:  Say Login as Manager</li>
+              <li>User XYZ: Say Login as employee</li>
+              <li>Other guest user with least privilege: Say login as Intern</li>
+            </ol> 
+            and based on your user type you'll be allowed to run the commands on the system you are using.
+            The power decreases from top to down that is root/Admin has all the rights and can execute any commands.(that is why 
+            you should be cautious about running any random command when logged in as admin). While User XYZ can only execute limited commands and
+            Guest users are not supposed to run any command so more restrictions are for them.
+          <br>
+          <br>
+          So now as you are clear with the types of user now let's see another question 
+          </p>
+          <h2 class="section-heading">Then what are groups?</h2>
+          <p align="justify">
+            So let's say you hired 5 more employees and you have to form the same set of privileges(i.e. what files they can access) for them so what you did is instead of defining 
+            rules for each you created a group, added all the users and then defined the rule for the group.
+            So now a group rule will be applied to users.
+          <br><br>
+          I guess things are getting clearer now. Right?
+          <br>
+          So let's dive somewhat deeper.
+        </p>
+          <img class="img-fluid" src="Images/chmod/page.png" style="display: block; margin-left: auto;margin-right: auto;" alt="">
+          <p align="justify">
+            We hope that you read our previous article <a href="https://anugrahpaul2000.github.io/techx/Ethical%20Hacking/Ethical_Hacking_Home.html" target="_blank">Getting Started withLinux</a> and must be understanding <code>ls -al</code>.
+            So let's try to analyse what it's giving as output.
+            <ul>
+              <li><b>Permissions granted and file type</b></li>
+              <img class="img-fluid" src="Images/chmod/permission.png" style="display: block; margin-left: auto;margin-right: auto;" alt="">
+              <p align="justify">So if we see the output then in starting we find 10 alphabets which tells us about the permission for different user and the file type.
+                <br>
+                The first bit can be either <code>d</code> indicating that it is a directory or <code>-</code> indicating it is a file type.  
+                Now the next nine bit can be grouped as the first three bits for User,the next three bits for the group and the last three bit for any other user. These group of three bits can contain only three values in this order respectively:
+                <ul>
+                  <li><code>r</code> : that the file can be read</li>
+                  <li><code>w</code> : that the file can be written</li>
+                  <li><code>x</code> : that the file can be executed</li>
+                </ul>
+                Depending on where these bits are present we can determine various permission available for User, group and other users respectively.
+                <br>
+                For example if we look back to our first photo we can see that file named first.py has following details shown:
+                <br><br>
+                <img class="img-fluid" src="Images/chmod/test.png" style="display: block; margin-left: auto;margin-right: auto;" alt="">
+                <br>
+                <ul>
+                  <li><code>-</code> : indicating its a file not a folder</li>
+                  <li><code>rwx</code> : User can read write and execute files</li>
+                  <li><code>r-x</code> : Group can read and execute but can't write to file</li>
+                  <li><code>r-x</code> : Other users can read and execute the file only</li>
+                </ul>
+                This was the most crucial part you need to know and I hope I was able to clear your doubts.
+              </p>
+              <li><b>Which user which group</b></li>
+              <img class="img-fluid" src="Images/chmod/group.png" style="display: block; margin-left: auto;margin-right: auto;" alt="">
+              <p align="justify">We get to see two columns as I marked above inside the red box. The first attribute tells the owner file name (user_name) and the second one is for group name.</p>
+              <li>Rest details that are displayed try to figure it out. Unleash the Hacker within you.</li>
+            </ul>
+            <br>
+            So now we have enough info to understand about the commands <code>chmod</code> & <code>chown</code>.
+            <h2 class="section-heading">Power of chmod</h2>
+            So let's say you wanna change permission of a file for the group. So you must
+            have got the idea that you have to make changes in 5th, 6th and 7th bit.But before giving you the spell commands let's learn one last thing.
+            <br><br>
+            <table border="1" align="center" style="text-align: center;">
+              <th>Digit</th>
+              <th>Meaning</th>
+              <tr>
+                <td>1</td>
+                <td>Executable file</td>
+              </tr>
+              <tr>
+                <td>2</td>
+                <td>File can be written</td>
+              </tr>
+              <tr>
+                <td>3</td>
+                <td>File can be executed and written</td>
+              </tr>
+              <tr>
+                <td>4</td>
+                <td>File can be read</td>
+              </tr>
+              <tr>
+                <td>5</td>
+                <td>File can be read and executed</td>
+              </tr>
+              <tr>
+                <td>6</td>
+                <td>File can be read and written</td>
+              </tr>
+              <tr>
+                <td>7</td>
+                <td>File can be read, written or can be Executed</td>
+              </tr>
+            </table>
+            <br>
+            And here is how to use your command
+            <br><br>
+            <center><code>chmod _ _ _ filename</code></center>
+            <br>
+            fill in those blank spaces with the numbers from the above table. Here first is for users, second is for groups and last blank is for other users respectively.
+            <br><br>
+            For Example:
+            <br><br>
+            <table border="1" align="center" >
+              <th style="text-align: center;">Command</th>
+              <th style="text-align: center;">Meaning</th>
+              <tr>
+                <td>chmod 123 file1</td>
+                <td><code>User: </code> Only Executable <br><code>Groups: </code> only write permission <br><code>Other Users: </code> Executable and can be written <br></td>
+              </tr>
+              <tr>
+                <td>chmod 452 file2</td>
+                <td><code>User: </code> Only Read <br><code>Groups: </code> Read and executable <br><code>Other Users: </code> Only write <br></td>
+              </tr>
+              <tr>
+                <td>chmod 253 file3</td>
+                <td><code>User: </code> Only Write <br><code>Groups: </code> Read and executable <br><code>Other Users: </code> Executable and can be written <br></td>
+              </tr>
+            </table>
+            <br>
+            You should note that to change the permission of files you either need to be the owner of the file or belong to the group which owns the files or if you are a root user then you have the ultimate power to do anything.
+          </p>
+          <h2 class="section-heading">Power of chown?</h2>
+          <p align="justify">
+            Now let's see how to change the ownership of the file. A point to note is that you need to be a user having more privilege than the present owner of the file.
+            <br>
+            So here is the command
+            <center><code>chown new_user:new_grp filename</code></center>
+            <br>
+            OR you can do change the ownership of user alone
+            <br><br>
+            <center><code>chown new_user filename</code></center>
+            <br>
+            For example :
+            <br> <code>chown n00bx101 hackwithtml.py</code>
+            <br>
+            This will change the owner of the file to n00bx101.
+          </p>
+          <p align="justify">Now the whole point of making you understand all these is to tell you how important this topic is.
+            Using these commands hackers do changes in permission of the files(payload) uploaded to the target machine and do privilege escalation and other malicious work. 
+            So if you wanna be a Ethical Hacker you must know these two commands. We'll keep releasing similar important topics for you till then stay low and happy hacking.
+            <br><br>
+            If you find any discripencies or have any suggestions for us then do contact us with your suggestions and feedbacks.
+          </p>
+        </div>
+      </div>
+    </div>
+  </article>
+
+  <hr>
+
+  <!-- Footer -->
+  <footer>
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-8 col-md-10 mx-auto">
+          <ul class="list-inline text-center">
+            <li class="list-inline-item">
+              <a href="https://www.linkedin.com/company/54288031">
+                <span class="fa-stack fa-lg">
+                  <i class="fas fa-circle fa-stack-2x"></i>
+                  <i class="fab fa-linkedin fa-stack-1x fa-inverse"></i>
+                </span>
+              </a>
+            </li>
+            <li class="list-inline-item">
+              <a href="https://github.com/Praddy2009">
+                <span class="fa-stack fa-lg">
+                  <i class="fas fa-circle fa-stack-2x"></i>
+                  <i class="fab fa-github fa-stack-1x fa-inverse"></i>
+                </span>
+              </a>
+            </li>
+          </ul>
+          <p class="copyright text-muted">Techx 101 &copy; All Rights Reserved</p>
+        <p class="copyright text-muted">Background Image from <a href="https://wallpapercave.com/wp/wp4005876.png">Wallpapercave</a></p>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Bootstrap core JavaScript -->
+  <script src="../vendor/jquery/jquery.min.js"></script>
+  <script src="../vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+  <!-- Custom scripts for this template -->
+  <script src="../js/clean-blog.min.js"></script>
+
+</body>
+
+</html>
