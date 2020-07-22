@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="Understanding chmod and chown">
+  <meta property="og:image" content="https://www.linode.com/docs/tools-reference/linux-users-and-groups/linux_users_and_groups.png">
+  <meta name="twitter:image" content="https://www.linode.com/docs/tools-reference/linux-users-and-groups/linux_users_and_groups.png">
+  <meta name="author" content="Praddyum Verma & Abhinav Gupta">
+
+  <title>chmod & chown</title>
+
+  <!-- Bootstrap core CSS -->
+  <link href="../vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+  <!-- Custom fonts for this template -->
+  <link href="../vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+  <link href='https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+  <link href='https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
+
+  <!-- Custom styles for this template -->
+  <link href="../css/clean-blog.min.css" rel="stylesheet">
+
+</head>
+
+<body>
+
+  <!-- Navigation -->
+  <nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav">
+    <div class="container">
+      <a class="navbar-brand" href="../index.html">Techx | 101</a>
+      <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+        Menu
+        <i class="fas fa-bars"></i>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarResponsive">
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item">
+            <a class="nav-link" href="../index.html">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="../about.html">About</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="Ethical_Hacking_Home.html">Ethical Hacking</a>
+          </li>
+          <!--<li class="nav-item">
+            <a class="nav-link" href="../contact.html">Contact Us</a>
+          </li>-->
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Page Header -->
+  <header class="masthead" style="background-image: url(Images/Phases/hackersym.jpg)">
+    <div class="overlay"></div>
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-8 col-md-10 mx-auto">
+          <div class="post-heading">
+            <h1>5 Phases of H@cking&nbsp;</h1>
+            <h2 class="subheading">A guide to Pentesting&nbsp;&nbsp;</h2>
+            <span class="meta">By
+              <a href="https://www.linkedin.com/in/praddyum/">Praddyum Verma</a> & <a href="https://www.linkedin.com/in/abhinav-g-5503b1a8">Abhinav Gupta</a><!--ADD LINKEDIN PROFILE LINKS-->
+              <br><br>
+               22 July 2020         </span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Post Content -->
+  <article>
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-8 col-md-10 mx-auto col-xl-9">
+          <p align="justify">
+          I know the word 'hacking' excites you all, so it's necessary to know how the whole hacking process is divided into 5 phases. It's not a 'rule written in stone'. Once you become a professional it mostly depends upon your imagination and creativity.<br><br>
+          Before we start it's important to know that this article is not about motivating you to go out and hack. It's necessary to know how a hacker works so that we could hack test/pentest&nbsp; on our own. Also,</p>
+          <blockquote>To protect youself from a hack, you must think like a hacker</blockquote>
+<h2 class="section-heading">5 Phases&nbsp;</h2>
+          <p align="justify">
+            Not necessarily a hacker has to follow these 5 steps in a sequential manner. It’s a stepwise process and when followed yields a better result.&nbsp; &nbsp;&nbsp;
+          <ol>
+            <li>Reconnaissance&nbsp;</li>
+              <li>Scanning&nbsp;</li>
+            <li> Gaining Access</li>
+            <li>Maintaining Access</li>
+              <li>Clearing Tracks&nbsp;</li>
+          </ol> 
+            
+         
+          <img src="Images/Phases/phases.jpg" style="display: block; margin-left: auto;margin-right: auto;" alt="">
+          <h3 class="section-heading">1. Reconnaissance&nbsp;</h3>
+          <p align="justify">In the 1st phase, hacker tries to gather information about the target.&nbsp;It may include Identifying the Target, finding out the target’s IP Address Range, Network, DNS records, etc. The attacker gathers info either in an active or passive way. It is also called as Footprinting phase.</p>
+          <p align="justify">The tools widely used are:-&nbsp;<b>NMAP, HTTPTrack, Hping, Maltego and Google Dorks.</b>&nbsp;</p>
+
+<img class="img-fluid" src="Images/Phases/footprinting.jpg" style="display: block; margin-left: auto;margin-right: auto;" alt="">
+			<br>
+          <h3 class ="section-heading">2. Scanning </h3>
+		  <p align="justify"> This phase includes usage of tools like dialers, port scanners, network mappers, sweepers, and vulnerability scanners to scan data. The hacker looks for open ports, live systems, vulnerabilities, map of the network, etc. </p>
+		  <p align="justify">Any information that may help in the hacking process is scanned. The tools used could be:-&nbsp; <b>Nessus, Nexpose, Maltego and NMAP.</b>&nbsp;</p>
+		  <h3 class="section-heading">3. Gaining&nbsp; Access&nbsp;&nbsp;</h3>
+          <p> This is the phase where the magic happens (or the crime). With the help of data from Phases 1 &amp; 2, the hacker now tries to gain access using various tools or methods. The possible attacks could be:- Phishing , DOS (Denial of Service), Buffer overflow, session hijacking, etc.
+              The primary tool used is <b>Metasploit.</b></p>
+            <p><img src="Images/Phases/metasploit.png" width="734" height="537" alt=""> <br>
+            </p>
+<h3 class="section-heading">4. Maintaining Access</h3>
+          <p align="justify"> It is the process where the hacker has already gained access into a system. After gaining access, the hacker installs some backdoors in order to enter into the system when he needs access in this owned system (zombie system) in future.&nbsp;</p>
+          
+          <p align="justify">&nbsp;No overt exploitation or attacks will occur at this time.  If there is no evidence of detection, a waiting game is played letting the victim think that nothing was disturbed, while the hacker will do the work in background. It is done using:- <b>Trojans, Rootkits or other malicious files.</b></p>
+          <h3 class="section-heading">5. Clearing Tracks</h3>
+<p align="justify">No thief wants to get caught. An intelligent hacker always clears all evidence so that in the later point of time, no one will find any traces leading to him.<br>
+	Before the attack, attacker would change their MAC address and attack using a VPN.
+          <br><br>
+            After gaining acces, the attacker covers his tracks by:- <b>Modifying/deleting the Logs, registry values and temp files</b><br>
+	<img src="Images/Phases/rootkit.png" alt="" class="img-thumbnail" style="display: block; margin-left: auto;margin-right: auto;">
+	
+	<br><br> As a White Hat hacker ;)  i hope you will use this knowledge to be aware, for pentesting and to fortify yourself of any attacks that might happen. 
+	<br> 
+          Now that you know the phases and several tools, we will dig deeper and see how the whole thing works very soon.&nbsp;Stay tuned for more exciting articles.</p>
+        </div>
+      </div>
+    </div>
+  </article>
+
+  <hr>
+
+  <!-- Footer -->
+  <footer>
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-8 col-md-10 mx-auto">
+          <ul class="list-inline text-center">
+            <li class="list-inline-item">
+              <a href="https://www.linkedin.com/company/54288031">
+                <span class="fa-stack fa-lg">
+                  <i class="fas fa-circle fa-stack-2x"></i>
+                  <i class="fab fa-linkedin fa-stack-1x fa-inverse"></i>
+                </span>
+              </a>
+            </li>
+            <li class="list-inline-item">
+              <a href="https://github.com/Praddy2009">
+                <span class="fa-stack fa-lg">
+                  <i class="fas fa-circle fa-stack-2x"></i>
+                  <i class="fab fa-github fa-stack-1x fa-inverse"></i>
+                </span>
+              </a>
+            </li>
+          </ul>
+          <p class="copyright text-muted">Techx 101 &copy; All Rights Reserved</p>
+        <p class="copyright text-muted">Background Image by <a href="https://pixabay.com/users/AbsolutVision-6158753/?utm_source=link-attribution&amp;utm_medium=referral&amp;utm_campaign=image&amp;utm_content=2714262">Gino Crescoli</a> from <a href="https://pixabay.com/?utm_source=link-attribution&amp;utm_medium=referral&amp;utm_campaign=image&amp;utm_content=2714262">Pixabay</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Bootstrap core JavaScript -->
+  <script src="../vendor/jquery/jquery.min.js"></script>
+  <script src="../vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+  <!-- Custom scripts for this template -->
+  <script src="../js/clean-blog.min.js"></script>
+
+</body>
+
+</html>
