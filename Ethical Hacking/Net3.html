@@ -5,11 +5,11 @@
 
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <meta name="description" content="Networking fundamentals">
-  <meta property="og:image" content="https://bournetocode.com/projects/GCSE_Computing_Fundamentals/pages/img/computer-network.jpg">
+  <meta name="description" content="Networking fundamentals| OSI LAYER">
+  <meta property="og:image" content="https://www.imperva.com/learn/wp-content/uploads/sites/13/2020/02/OSI-7-layers.jpg">
   <meta name="author" content="Praddyum Verma & Abhinav Gupta">
 
-  <title>Networking Fundamentals Part 2</title>
+  <title>Networking Fundamentals Part 3</title>
 
   <!-- Bootstrap core CSS -->
   <link href="../vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
@@ -60,7 +60,7 @@
       <div class="row">
         <div class="col-lg-8 col-md-10 mx-auto">
           <div class="post-heading">
-            <h1>Networking Fundamentals Part 2&nbsp;</h1>
+            <h1>Networking Fundamentals Part 3&nbsp;</h1>
             <h2 class="subheading">OSI Model | TCP/IP Model</h2>
             <span class="meta">By
               <a href="https://www.linkedin.com/in/praddyum/">Praddyum Verma</a> & <a href="https://www.linkedin.com/in/abhinav-g-5503b1a8">Abhinav Gupta</a><!--ADD LINKEDIN PROFILE LINKS-->
@@ -98,10 +98,68 @@
                       <b>2)TCP/IP Model</b>  (Practically used)
                   </p>
                   <p align="justify">
-                      TCP/IP model is what used practically nowadays but the OSI model is considered as the best place to start with and we'll also start from here with
+                      TCP/IP model is what is used practically nowadays but the OSI model is considered as the best place to start with and we'll also start from here with
                       in-depth understanding.
                   </p>
-                  More content coming soon
+                  <h3 class="section-heading">OSI Model</h3>
+                  <p align="justify">
+                    The Open System Interconnection model (OSI) is a conceptual model that characterises and 
+                    standardised the communication functions of a telecommunication or computing system without regard to its underlying internal
+                    structure and technology.<br><br> Let me show you a diagram: 
+
+                    <img class="img-fluid" src="Images/Network/OSI.jpg" style="display: block; margin-left: auto;margin-right: auto;" alt="">
+
+                    Let's learn the sequence before understanding it. Repeat after me : "<b>P</b>lease <b>D</b>o <b>N</b>ot <b>T</b>hrow <b>S</b>ausage <b>P</b>izza <b>A</b>way".
+                    <br>
+                    Did you notice the bolden characters? Yes, it's a way to learn the sequence and believe me it's gonna help you later.
+
+                    <br><br>
+                    So I want you to understand one more thing that data at different layers are in different forms which is known as <b>Protocol Data Unit (PDU).</b> Now let's move top to down in the OSI stack.
+                  
+                    <h4>1. Application Layer</h4>
+                    This layer deals with the networking applications protocols like HTTP, FTP IRC,SSH etc. <br> <br><blockquote><-------- Here PDU is in the form of User Data.-------------></blockquote>
+                    <br>
+                    <h4>2. Presentation Layer</h4>
+                    This layer is responsible for presenting the data in the required format which may include Encryption & Decryption. Protocols used here are SSL, SSH, IMAP FTP etc<br> <br><blockquote><-------Here PDU is in the form of Formatted Data.---------></blockquote>
+                    <br>
+                    <h4>3. Session Layer</h4>
+                    This layer establishes,Manages and terminates the session between two hosts. APIs , SOCKETS function here! <br> <br><blockquote><-------Here PDU is in the form of Formatted Data.---------></blockquote>
+                    <br>
+                    <h4>4. Transport Layer</h4>
+                    This layer breaks up the data from the sending host and then reassembles it in the receiver.It's also used to insure reliable data transport across the network.TCP , UDP protocol is decided here. <br>Three Important steps that occur here are:
+                    <br><b>Step 1:</b> Segmentation
+                    <br><b>Step 2:</b> Assigning Sequence Number
+                    <br><b>Step 3:</b> Assign port number according to TCP or UDP connection.
+                    <br> <br><blockquote><-------Here PDU is in the form of Segment.---------></blockquote>
+                    <img class="img-fluid" src="Images/Network/Trans_Lay.png" style="display: block; margin-left: auto;margin-right: auto;" alt="">     
+                    <br>
+                    <h4>5. Network Layer</h4>
+                    This layer makes the "best path Determination" (Routing) decision based on logical Address (IP Address). IP, ICMP,IPSec function here! <br> <br><blockquote><-------Here PDU is in the form of Packets.---------></blockquote>
+                    <img class="img-fluid" src="Images/Network/Net_Lay.png" style="display: block; margin-left: auto;margin-right: auto;" alt="">     
+                    <br>
+                    <h4>6. Data Link Layer</h4>
+                    This layer provides reliable transit of data across a physical link. Makes decisions based on physical addresses(MAC Address). Ethernet, PPP, Switch, Bridge function here! <br> <br><blockquote><-------Here PDU is in the form of Frame.---------></blockquote>  
+                    <img class="img-fluid" src="Images/Network/Dat_Lay.png" style="display: block; margin-left: auto;margin-right: auto;" alt="">     
+                    <br>
+                    <h4>7. Physical Layer</h4>
+                    This layer converts the whole data into binary format. And physical devices like Ethernet, Optical fibre Cable function here! <br> <br><blockquote><-------Here PDU is in the form of Binary.---------></blockquote>
+                  </p>
+                  <p align="justify">Now as the data move from top to down it's encapsulated with the information shown above and as it reaches to the destination it's being decapsulated as it moves up. </p>
+                  <img class="img-fluid" src="Images/Network/OSI.gif" style="display: block; margin-left: auto;margin-right: auto;" alt=""> 
+                  <p>So by this time you must be able to understand most of the stuff but I highly encourage you to check out the internet as there is ample of resources over this.</p>    
+                  
+                  <h3 class="section-heading">TCP/IP Model</h3>
+                  <p>You must be thinking that we already have a pretty nice OSI model so what is the need of TCP/IP then. So the answer is that TCP/IP is more practicla and widely implemented plus accepted. By the way it is much more compact than OSI and similar to OSI. Let me show you: </p>
+                  <img class="img-fluid" src="Images/Network/TCP.png" style="display: block; margin-left: auto;margin-right: auto;" alt=""> 
+                  So as you can see that in TCP IP we combine some layers of OSI and make it as one layer that is all the processing is done in that one layer only.
+
+                  <br>As a hacker perspective one should know how data is travelling between two computers via wire or wireless so that he/she can check for the vulnerabilities found in the path.
+
+                  <br><br>
+                  <b>Resources</b>
+                  <br>
+                  <br><a href="https://www.youtube.com/watch?v=vv4y_uOneC0"><b>OSI Model Video</b></a>
+                  <br><a href="https://www.youtube.com/watch?v=qd9I_dVaaaE"><b>OSI Vs TCP Comparison Video</b></a>
                 </div>
             </div>
         </div>
