@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="Enumeration in Ethical Hacking">
+  <meta property="og:image" content="https://pyxis.nymag.com/v1/imgs/4db/9a9/78f0f50285dd11bef4946bc47283e49281-pills-lede.rhorizontal.w1200.jpg">
+  <meta name="author" content="Praddyum Verma">
+
+  <title>Enumerating Secrets</title>
+
+  <!-- Bootstrap core CSS -->
+  <link href="../vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+  <!-- Custom fonts for this template -->
+  <link href="../vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+  <link href='https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+  <link href='https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
+
+  <!-- Custom styles for this template -->
+  <link href="../css/clean-blog.min.css" rel="stylesheet">
+
+</head>
+
+<body>
+
+  <!-- Navigation -->
+  <nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav">
+    <div class="container">
+      <a class="navbar-brand" href="../index.html">Techx | 101</a>
+      <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+        Menu
+        <i class="fas fa-bars"></i>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarResponsive">
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item">
+            <a class="nav-link" href="../index.html">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="../about.html">About</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="Ethical_Hacking_Home.html">Ethical Hacking</a>
+          </li>
+          <!--<li class="nav-item">
+            <a class="nav-link" href="../contact.html">Contact Us</a>
+          </li>-->
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Page Header -->
+  <header class="masthead" style="background-image: url(Images/Enum/2.jpeg)">
+    <div class="overlay"></div>
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-8 col-md-10 mx-auto">
+          <div class="post-heading">
+            <h1>Enumerating Secrets&nbsp;</h1>
+            <h2 class="subheading">The more you Enumerate the more you know.</h2>
+            <span class="meta">By
+              <a href="https://www.linkedin.com/in/praddyum/">Praddyum Verma</a>
+              <br><br>
+               22 Jan 2021         </span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Post Content -->
+    <article>
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 col-md-10 mx-auto col-xl-9">
+                  <h3 class="section-heading">Note for Readers</h3>
+                  <p align="justify">
+                    Greeting to all the lovely souls who are reading this article. Maybe you are a noob(yep, 
+                    this is what we call a newbie) an intermediate, or an expert who opened this article to 
+                    quench their thirst for Cyber Security. Some of you might have already known how important
+                    an enumeration is? At the same time for others, it is either a new word or they are already
+                    with problems in understanding the topic. Don’t worry, I’ll try my best to compile creativity
+                    and knowledge and provide you clear explanations with examples. Just hold tight for a Rollercoaster Ride!!   
+                  </p> 
+                  <h3 class="section-heading">Various Steps in Hacking</h3>
+                  <p align="justify">
+                    When we talk about hacking a thing, where this 
+                    “thing” could range from a simple NASA Challenge 
+                    website to NASA servers, operating in their headquarters
+                    (don’t tell me you already hacked both using HTML).
+                    A set of phases have been framed by the professional of the 
+                    cybersecurity field. 
+                    <br>
+                      <br>
+                      <img class="img-fluid" src="Images/Enum/1.png" style="display: block; margin-left: auto;margin-right: auto;" alt="">
+                  </p>   
+
+                  <p align="justify">
+                    Namely,
+                    <br>
+                    <ol>
+                      <li><b>Reconnaissance</b>: Getting to know about the target. It’s IP, software, network, etc.
+                      <li><b>Scanning</b>: Using IP we try to identify live hosts, their open ports, and the services running on these ports.
+                      <li><b>Gaining Access</b>: To gain access to the target, malicious codes(exploits) are used to exploit the vulnerability found in services(if any).
+                      <li><b>Maintaining Access</b>: After gaining access, we try for privilege escalation(to act as the owner of the target) and create a backdoor(mostly a netcat or ssh connection using exploits) so that we can access the target in the future.
+                      <li><b>Clearing Track</b>.: Whatever you do, the target machine is logged by the log files, so to avoid our detection by SOC teams one should not fail to clear the logs before leaving. 
+                    </ol>
+                    This can be grouped as:
+                    <ul>
+                        <li>Gathering Information(Reconnaissance and Scanning),
+                        <li>Exploiting the target and finally clearing the tracks. 
+                    </ul> 
+                    As a penetration tester, you’ll be investing 50–60% of your time gathering information about the target. But think of a situation where you are not aware of the target like- on which OS it’s running(different OS have different sets of exploits), what are the vulnerable services running, and what are their versions? This is where “Enumeration” plays a vital role. Enumeration is the practice of researching more about various services running on our target and then listing the possibilities of exploiting them. It helps us to finetune our action. We can just blindly use every exploit in hope of getting the movie type terminal with an infinite loop of words! LOL!!. Enumeration can be used to gather usernames, passwords, network information, hostnames, application data, services, or any other information that may be valuable to a hacker.    
+    
+                  </p>   
+
+                  <h3 class="section-heading">Enumeration is the key</h3>
+                  <p align="justify">
+                    As I have already mentioned how important the enumeration process is, let’s try to understand it with an analogy. Think of yourself, you are a noob and you want to hack into your friend's system(maybe the one you got from your university). By the grace of god, you all are connected by the university Wi-Fi means you can easily ping each other and are located on the subnet. Sounds exciting? Now you can ping the target that’s where you have options:
+                    <ol>
+                      <li>Use all the (almost uncountable) exploits existing in the universe thinking one day you’ll be fortunate enough to be alive to look at that one correct exploit work and give access to all the goofy data you are looking for.
+                      <li>Take the path to enumerate various ports to list down services(FTP, SMB, SMTP, etc) running on the victim system. Try gathering exploits for these services only which saves more time(I mean it). Even you can go for OS fingerprinting to know more about the base Operating System(Black sheep like me). 
+                    </ol>
+                    So which one are you choosing? 
+                    <br>
+                      <br>
+                      <img class="img-fluid" src="Images/Enum/2.jpeg" style="display: block; margin-left: auto;margin-right: auto;" alt="">
+                  </p>   
+
+                  <h3 class="section-heading">Enumerating Services Example</h3>
+                  <p align="justify">
+                    Enough of theory, let’s see an example to understand 
+                    the whole process. To make you understand, I’ll replicate 
+                    the SMB enumeration in the <a href="https://tryhackme.com/room/networkservices">Network Services room at TryHackMe</a>.
+                    Let’s assume we only have the IP of our target and we are on the same 
+                    network(i.e. I can ping the machine/ connect to it).
+                    <br><br>
+                    IP of target : 10.10.10.10 (Imaginary) 
+                    <br>
+                      <br>
+                      <img class="img-fluid" src="Images/Enum/3.png" style="display: block; margin-left: auto;margin-right: auto;" alt="">
+                      <img class="img-fluid" src="Images/Enum/4.png" style="display: block; margin-left: auto;margin-right: auto;" alt="">
+
+                      <br>
+                      
+                      So this was our scanning phase where we tried to know about the open ports, services running on those ports, 
+                      and the OS fingerprint.
+                      Now, let’s get the important parts from above
+                      <br><br>
+                      Ports and Services 
+                      <img class="img-fluid" src="Images/Enum/5.png" style="display: block; margin-left: auto;margin-right: auto;" alt="">
+                      <br>
+                      So now we know that two services namely SSH and SMB are running on the target. This will help us to pick 
+                      exploits meant only for these vulnerabilities. Let’s enumerate SMB to gain more insights. We’ll be using a CLI tool 
+                      named Enum4Linux to enumerate SMB thereby, extracting all the possible information like shares, users, etc.
+                      
+                      IP of target : 10.10.10.10 (Imaginary) 
+                      <img class="img-fluid" src="Images/Enum/6.png" style="display: block; margin-left: auto;margin-right: auto;" alt="">
+                      <img class="img-fluid" src="Images/Enum/7.png" style="display: block; margin-left: auto;margin-right: auto;" alt="">
+                      <img class="img-fluid" src="Images/Enum/9.png" style="display: block; margin-left: auto;margin-right: auto;" alt="">
+                      <br>
+                      Key Findings: 
+                      <img class="img-fluid" src="Images/Enum/10.png" style="display: block; margin-left: auto;margin-right: auto;" alt="">
+                      <br>
+                      So we found that “profiles” are shared in SMB. Let’s try to connect to it with a tool called “smbclient”, using the misconfiguration of Anonymous Login. 
+                      <img class="img-fluid" src="Images/Enum/11.png" style="display: block; margin-left: auto;margin-right: auto;" alt="">
+                      <br>
+                      Woohoo!! We got the files of credentials. Now we can do ssh and connect to the machine, create the backdoor and also clear the tracks. 
+                  </p>   
+                  <h3 class="section-heading">Ending note</h3>
+                  <p align="justify">
+                    Maybe you found this a bit daunt or maybe you thought it’s all setup praddy. We don’t find these in real life but it 
+                    does take place in reality. Many organizations are hit by cyber attacks due to outdated services running on the system. In this article, 
+                    we learned how to enumerate(know more) about services and to save time by choosing wisely their respective exploits. For various services, 
+                    we have various enumeration tools. I recommend learning about them. Share your experience in the comment section. Till then keep hacking and securing :) Signing off!! 
+                  </p>
+                  <br><br>
+                  <b>Resources</b>
+                  <br>
+                  <br><a href="https://tryhackme.com/room/networkservices"><b>TryHackMe Room</b></a>
+                </div>
+            </div>
+        </div>
+    </article>
+
+  <hr>
+
+  <!-- Footer -->
+  <footer>
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-8 col-md-10 mx-auto">
+          <ul class="list-inline text-center">
+            <li class="list-inline-item">
+              <a href="https://www.linkedin.com/company/54288031">
+                <span class="fa-stack fa-lg">
+                  <i class="fas fa-circle fa-stack-2x"></i>
+                  <i class="fab fa-linkedin fa-stack-1x fa-inverse"></i>
+                </span>
+              </a>
+            </li>
+            <li class="list-inline-item">
+              <a href="https://github.com/Praddy2009">
+                <span class="fa-stack fa-lg">
+                  <i class="fas fa-circle fa-stack-2x"></i>
+                  <i class="fab fa-github fa-stack-1x fa-inverse"></i>
+                </span>
+              </a>
+            </li>
+          </ul>
+          <p class="copyright text-muted">Techx 101 &copy; All Rights Reserved</p>
+        
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Bootstrap core JavaScript -->
+  <script src="../vendor/jquery/jquery.min.js"></script>
+  <script src="../vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+  <!-- Custom scripts for this template -->
+  <script src="../js/clean-blog.min.js"></script>
+
+</body>
+
+</html>
