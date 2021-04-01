@@ -1,0 +1,4 @@
+This is a Brave Rewards publisher verification file.
+
+Domain: techx101.tech
+Token: fe93429a73faa1334b7d86f3d50175416d93b369be0a9bb49e0e31e7f26fe219
